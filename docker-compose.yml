@@ -1,0 +1,18 @@
+version: '1.0'
+services:
+  mongo-db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    container_name: mongo-db-projects
+    volumes:
+      - ./db/:/data/db
+  java-api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: java-api-challenge
+    links:
+      - mongo-db
