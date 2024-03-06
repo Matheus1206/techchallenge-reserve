@@ -13,4 +13,5 @@ public class RestauranteException extends Exception{
     public String methodArgumentNotValidException(MethodArgumentNotValidException validException){
         return validException.getMessage();
     }
+
 }

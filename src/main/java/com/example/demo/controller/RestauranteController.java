@@ -1,15 +1,15 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Restaurante;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.dto.RestauranteDto;
 import com.example.demo.services.RestauranteService;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 
 @RestController
@@ -23,8 +23,17 @@ public class RestauranteController {
     }
 
     @PostMapping()
-    public ResponseEntity<RestauranteDto> postMethodName(@RequestBody @Valid RestauranteDto restaurantDto) {
-        return restaurantService.create(restaurantDto);
+    public ResponseEntity<RestauranteDto> cadastrar(@RequestBody @Valid RestauranteDto restaurantDto) {
+        return restaurantService.cadastrar(restaurantDto);
     }
 
+    @GetMapping("/todos")
+    public List<Restaurante> todos() {
+        return restaurantService.todos();
+    }
+
+    @GetMapping("/pesquisa")
+    public List<Restaurante> pesquisaParametro(@RequestParam String parametro, @RequestParam String valor){
+        return restaurantService.pesquisaPorParametro(parametro , valor);
+    }
 }
