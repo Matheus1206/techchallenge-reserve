@@ -11,6 +11,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -67,10 +68,10 @@ class RestauranteTest {
                 .horarioFuncionamento("Noite")
                 .tipoCozinha(TipoCozinha.ITALIANA)
                 .build();
-        var listaRestaurante = Arrays.asList(restaurante);
+        var listaRestaurante = Collections.singletonList(restaurante);
         when(restauranteRepository.pesquisaPorParametro("nome", "Spolletos")).thenReturn(listaRestaurante);
 
-        List<Restaurante> restaurantes = restauranteRepository.pesquisaPorParametro("nome", "Spolletos");
+        var restaurantes = restauranteRepository.pesquisaPorParametro("nome", "Spolletos");
 
         assertThat(restaurantes)
                 .isNotNull()

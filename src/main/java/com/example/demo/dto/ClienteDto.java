@@ -6,9 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 
 public record ClienteDto(@NotBlank String nome, @NotBlank @Email String email) {
     public Cliente toModel() {
-        return Cliente.builder()
-                .email(email)
-                .nome(nome)
-                .build();
+        return new Cliente(nome, email);
     }
 }
