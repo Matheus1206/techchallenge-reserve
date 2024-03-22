@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.Query;
 import java.util.List;
 
 
-public interface RestauranteRepository extends MongoRepository<Restaurante, Long> {
+public interface RestauranteRepository extends MongoRepository<Restaurante, String> {
     @Query("{?0:?1}")
     List<Restaurante> pesquisaPorParametro(String parametro, String valor);
 }

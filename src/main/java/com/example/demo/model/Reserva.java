@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -8,6 +9,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDateTime;
 
 
 @Document
@@ -23,15 +26,15 @@ public class Reserva {
     @NotNull
     @Min(1) @Max(4)
     private Integer lugares;
-    @NotBlank
-    private String dataReserva;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    private LocalDateTime dataReserva;
 
     private String observacao;
 
 
     public Reserva(){}
 
-    public Reserva(String cliente, String mesa, Integer lugares, String dataReserva, String observacao) {
+    public Reserva(String cliente, String mesa, Integer lugares, LocalDateTime dataReserva, String observacao) {
         this.emailCliente = cliente;
         this.mesa = mesa;
         this.lugares = lugares;

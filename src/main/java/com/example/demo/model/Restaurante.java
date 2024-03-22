@@ -1,11 +1,9 @@
 package com.example.demo.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 public class Restaurante {
@@ -18,18 +16,20 @@ public class Restaurante {
 
     private TipoCozinha tipoCozinha;
 
-    private String horarioFuncionamento;
+    private String horarioInicial;
+
+    private String horarioFinal;
 
     private Integer capacidade;
 
     public Restaurante(){}
 
-    public Restaurante(String nome, String localizacao, TipoCozinha tipoCozinha, String horarioFuncionamento, Integer capacidade) {
+    public Restaurante(String nome, String localizacao, TipoCozinha tipoCozinha, String horarioInicial, String horaFinal,Integer capacidade) {
         this.nome = nome;
         this.localizacao = localizacao;
         this.tipoCozinha = tipoCozinha;
-        this.horarioFuncionamento = horarioFuncionamento;
+        this.horarioFinal = horaFinal;
+        this.horarioInicial = horarioInicial;
         this.capacidade = capacidade;
     }
-
 }

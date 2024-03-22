@@ -14,4 +14,10 @@ public class RestauranteException extends Exception{
         return validException.getMessage();
     }
 
+    @ExceptionHandler(QuantidadeDeMesaDisponivelException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String quantidadeDeMesaDisponnivelException(QuantidadeDeMesaDisponivelException validException){
+        return validException.getMessage();
+    }
+
 }
