@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.model.HorarioFuncionamento;
 import com.example.demo.model.Restaurante;
 import com.example.demo.model.TipoCozinha;
 import com.example.demo.repository.RestauranteRepository;
@@ -43,7 +44,7 @@ class RestauranteTest {
                 .nome("Spolleto")
                 .localizacao("SP")
                 .capacidade(23)
-                .horarioFuncionamento("Noite")
+                .horarioFuncionamento(Arrays.asList(HorarioFuncionamento.ALMOCO))
                 .tipoCozinha(TipoCozinha.ITALIANA)
                 .build();
 
@@ -65,7 +66,7 @@ class RestauranteTest {
                 .nome("Spolletos")
                 .localizacao("SP")
                 .capacidade(23)
-                .horarioFuncionamento("Noite")
+                .horarioFuncionamento(Arrays.asList(HorarioFuncionamento.TODOS))
                 .tipoCozinha(TipoCozinha.ITALIANA)
                 .build();
         var listaRestaurante = Collections.singletonList(restaurante);
