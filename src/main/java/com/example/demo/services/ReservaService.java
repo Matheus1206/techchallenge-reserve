@@ -37,7 +37,7 @@ public class ReservaService {
         if(!(restaurante.getCapacidade() < reservaDto.lugares())){
             restaurante.setCapacidade(restaurante.getCapacidade() - reservaDto.lugares());
             restauranteRepository.save(restaurante);
-            Reserva save = reservaRepository.save(new Reserva(cliente.get().getEmail(), reservaDto.mesa(), reservaDto.lugares(), reservaDto.dataReserva(), reservaDto.observacao()));
+            Reserva save = reservaRepository.save(new Reserva(cliente.get().getEmail(), reservaDto.lugares(), reservaDto.dataReserva(), reservaDto.observacao()));
             return save.toString();
         } else {
             throw new QuantidadeDeMesaDisponivelException();

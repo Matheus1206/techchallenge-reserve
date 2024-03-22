@@ -31,12 +31,8 @@ public class Reserva {
 
     private String observacao;
 
-
-    public Reserva(){}
-
-    public Reserva(String cliente, String mesa, Integer lugares, LocalDateTime dataReserva, String observacao) {
+    public Reserva(String cliente, Integer lugares, LocalDateTime dataReserva, String observacao) {
         this.emailCliente = cliente;
-        this.mesa = mesa;
         this.lugares = lugares;
         this.dataReserva = dataReserva;
         this.observacao = observacao;

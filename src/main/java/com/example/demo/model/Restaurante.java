@@ -2,6 +2,10 @@ package com.example.demo.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -16,20 +20,17 @@ public class Restaurante {
 
     private TipoCozinha tipoCozinha;
 
-    private String horarioInicial;
-
-    private String horarioFinal;
+    private List<HorarioFuncionamento> horarioFuncionamento = new ArrayList<>();
 
     private Integer capacidade;
 
     public Restaurante(){}
 
-    public Restaurante(String nome, String localizacao, TipoCozinha tipoCozinha, String horarioInicial, String horaFinal,Integer capacidade) {
+    public Restaurante(String nome, String localizacao, List<HorarioFuncionamento> horarioFuncionamento, TipoCozinha tipoCozinha,Integer capacidade) {
         this.nome = nome;
         this.localizacao = localizacao;
         this.tipoCozinha = tipoCozinha;
-        this.horarioFinal = horaFinal;
-        this.horarioInicial = horarioInicial;
+        this.horarioFuncionamento = horarioFuncionamento;
         this.capacidade = capacidade;
     }
 }

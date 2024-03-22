@@ -10,5 +10,5 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
-public record ReservaDto(@NotBlank @JsonProperty("email") String emailCliente, @NotBlank String mesa, @NotNull @Min(1) @Max(4) Integer lugares, @NotNull @JsonProperty("data") @JsonFormat(pattern="yyyy-MM-dd HH:mm") LocalDateTime dataReserva, @JsonIgnoreProperties String observacao) {
+public record ReservaDto(@NotBlank @JsonProperty("email") String emailCliente, @NotNull @Min(1) @Max(4) Integer lugares, @NotNull @JsonProperty("data") @JsonFormat(pattern="yyyy-MM-dd HH:mm") LocalDateTime dataReserva, @JsonIgnoreProperties String observacao) {
 }
