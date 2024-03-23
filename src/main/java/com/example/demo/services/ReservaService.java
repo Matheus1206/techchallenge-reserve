@@ -34,10 +34,10 @@ public class ReservaService {
         if(cliente.isEmpty()){
             throw new ClassNotFoundException();
         }
-        if(!(restaurante.getCapacidade() < reservaDto.lugares())){
-            restaurante.setCapacidade(restaurante.getCapacidade() - reservaDto.lugares());
+        if(restaurante.getCapacidade() >= 1){
+            restaurante.setCapacidade(restaurante.getCapacidade() - 1);
             restauranteRepository.save(restaurante);
-            Reserva save = reservaRepository.save(new Reserva(cliente.get().getEmail(), reservaDto.lugares(), reservaDto.dataReserva(), reservaDto.observacao()));
+            Reserva save = reservaRepository.save(new Reserva(cliente.get().getEmail(), reservaDto.lugares(), reservaDto.dataReserva(), reservaDto.observacao(), new Restaurante(restaurante.getId(), restaurante.getNome(), restaurante.getLocalizacao(), restaurante.getTipoCozinha(), restaurante.getHorarioFuncionamento(), restaurante.getCapacidade())));
             return save.toString();
         } else {
             throw new QuantidadeDeMesaDisponivelException();
