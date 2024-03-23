@@ -2,6 +2,8 @@ package com.example.demo.services;
 
 import com.example.demo.model.Reserva;
 import com.example.demo.repository.ReservaRepository;
+import com.example.demo.utils.ReservaConfirmadaEvent;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,8 +14,11 @@ public class EstabelecimentoService {
 
     private final ReservaRepository reservaRepository;
 
-    public EstabelecimentoService(ReservaRepository reservaRepository){
+    private final ApplicationEventPublisher eventPublisher;
+
+    public EstabelecimentoService(ReservaRepository reservaRepository, ApplicationEventPublisher eventPublisher){
         this.reservaRepository = reservaRepository;
+        this.eventPublisher = eventPublisher;
     }
 
 
@@ -26,5 +31,10 @@ public class EstabelecimentoService {
         reserva.setStatusReserva();
         reservaRepository.save(reserva);
         return reserva;
+    }
+
+    public void avaliarReserva(String idReserva) {
+        Reserva reserva = reservaRepository.findById(idReserva).orElseThrow();
+        eventPublisher.publishEvent(new ReservaConfirmadaEvent(this, reserva));
     }
 }

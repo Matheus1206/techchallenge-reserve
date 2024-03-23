@@ -25,4 +25,9 @@ public class EstabelecimentoController {
     public Reserva mudarStatus(@RequestParam String idReserva){
         return estabelecimentoService.mudarStatusReserva(idReserva);
     }
+
+    @PostMapping("/avaliar")
+    public void avaliarReserva(@RequestParam String idReserva){
+        estabelecimentoService.avaliarReserva(idReserva);
+    }
 }
