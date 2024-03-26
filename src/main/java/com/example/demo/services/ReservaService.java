@@ -28,7 +28,7 @@ public class ReservaService {
     }
 
     @SneakyThrows
-    public String validaReserva(ReservaDto reservaDto, String idRestaurante) {
+    public Reserva validaReserva(ReservaDto reservaDto, String idRestaurante) {
         Restaurante restaurante = restauranteRepository.findById(idRestaurante).orElseThrow();
         Optional<Cliente> cliente = clienteRepository.findByEmail(reservaDto.emailCliente());
         if(cliente.isEmpty()){
@@ -37,8 +37,7 @@ public class ReservaService {
         if(restaurante.getCapacidade() >= 1){
             restaurante.setCapacidade(restaurante.getCapacidade() - 1);
             restauranteRepository.save(restaurante);
-            Reserva save = reservaRepository.save(new Reserva(cliente.get().getEmail(), reservaDto.lugares(), reservaDto.dataReserva(), reservaDto.observacao(), new Restaurante(restaurante.getId(), restaurante.getNome(), restaurante.getLocalizacao(), restaurante.getTipoCozinha(), restaurante.getHorarioFuncionamento(), restaurante.getCapacidade())));
-            return save.toString();
+            return reservaRepository.save(new Reserva(cliente.get().getEmail(), reservaDto.lugares(), reservaDto.dataReserva(), reservaDto.observacao(), new Restaurante(restaurante.getId(), restaurante.getNome(), restaurante.getLocalizacao(), restaurante.getTipoCozinha(), restaurante.getHorarioFuncionamento(), restaurante.getCapacidade())));
         } else {
             throw new QuantidadeDeMesaDisponivelException();
         }

@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.restaurante;
 
 import com.example.demo.model.HorarioFuncionamento;
 import com.example.demo.model.Restaurante;

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.ReservaDto;
+import com.example.demo.model.Reserva;
 import com.example.demo.services.ReservaService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class ReservaController {
         this.reservaService = reservaService;
     }
     @PostMapping
-    public String reservar(@RequestBody @Valid ReservaDto reservaDto, @RequestParam String idRestaurante){
+    public Reserva reservar(@RequestBody @Valid ReservaDto reservaDto, @RequestParam String idRestaurante){
         return reservaService.validaReserva(reservaDto, idRestaurante);
     }
 }

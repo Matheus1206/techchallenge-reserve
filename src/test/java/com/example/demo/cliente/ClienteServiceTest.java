@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.cliente;
 
 import com.example.demo.dto.ClienteDto;
 import com.example.demo.model.Cliente;
@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.http.ResponseEntity;
 
 import java.util.Objects;
 
@@ -33,8 +32,7 @@ class ClienteServiceTest {
     void testCriarCliente(){
         Cliente cliente = new Cliente("teste", "teste@teste.com");
         when(clienteRepository.save(cliente)).thenReturn(cliente);
-
-        ResponseEntity<ClienteDto> salvar = clienteService.salvar(new ClienteDto(cliente.getNome(), cliente.getEmail()));
+        var salvar = clienteService.salvar(new ClienteDto(cliente.getNome(), cliente.getEmail()));
         assertEquals("teste", Objects.requireNonNull(salvar.getBody()).nome());
 
     }
