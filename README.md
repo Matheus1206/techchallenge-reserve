@@ -23,3 +23,5 @@ Outro desafio enfrentado foi a dockerização do projeto. Definimos como objetiv
 3 - Execute o comando "_docker compose up_"
 
 4 - Abra um navegador da sua preferência e acesse a url: http://localhost:8080/swagger-ui/index.html para conseguir acessar o swagger onde estão especificadas todas as apis e chamadas.
+
+* Vale ressaltar que o serviço está sendo disponibilizado na url: http://54.234.167.22:8080/swagger-ui/index.html, utilizando o serviço da AWS.
