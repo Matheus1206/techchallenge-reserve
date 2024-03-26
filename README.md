@@ -20,6 +20,6 @@ Outro desafio enfrentado foi a dockerização do projeto. Definimos como objetiv
 
 2 - Abra o terminal de sua preferência e navegue até o projeto
 
-3 - Execute o comando "_mvn spring-boot:run_"
+3 - Execute o comando "_docker compose up_"
 
 4 - Abra um navegador da sua preferência e acesse a url: http://localhost:8080/swagger-ui/index.html para conseguir acessar o swagger onde estão especificadas todas as apis e chamadas.
